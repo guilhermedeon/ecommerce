@@ -1,0 +1,4 @@
+user: postgres
+pw: postgres
+
+db = pi5b
