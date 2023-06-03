@@ -28,4 +28,11 @@ public class Usuario {
     @OneToMany (mappedBy = "usuario")
     List<Pedido> pedidos = new ArrayList<>();
 
+    public Usuario(String nome, String username, String senha, Nivel nivel){
+        this.nome = nome;
+        this.username = username;
+        this.senha = senha;
+        this.nivel = nivel;
+    }
+
 }

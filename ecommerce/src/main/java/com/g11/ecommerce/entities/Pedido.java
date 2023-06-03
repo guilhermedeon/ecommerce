@@ -1,5 +1,6 @@
 package com.g11.ecommerce.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -19,10 +20,14 @@ public class Pedido {
     @Column(name = "id", nullable = false)
     private Long id;
 
-    @ManyToOne
+    @ManyToOne @JsonIgnore @ToString.Exclude
     Usuario usuario;
 
     @OneToMany(mappedBy = "pedido")
     private List<ItemPedido> listaItensPedido = new ArrayList<>();
+
+    public Pedido(Usuario usuario){
+        this.usuario = usuario;
+    }
 
 }
