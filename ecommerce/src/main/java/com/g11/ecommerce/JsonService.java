@@ -3,10 +3,8 @@ package com.g11.ecommerce;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectWriter;
-import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Service;
 
-import java.io.Serializable;
 import java.util.List;
 @Service
 public class JsonService {
