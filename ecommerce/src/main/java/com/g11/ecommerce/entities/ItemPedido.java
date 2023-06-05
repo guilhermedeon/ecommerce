@@ -16,6 +16,7 @@ public class ItemPedido {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
+    @JsonIgnore @ToString.Exclude
     private Long id;
 
     @ManyToOne @JsonIgnore @ToString.Exclude

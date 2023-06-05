@@ -8,6 +8,7 @@ import com.g11.ecommerce.repositories.PedidoRepository;
 import com.g11.ecommerce.repositories.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -28,7 +29,8 @@ public class TestController {
 
     @GetMapping("/setup/")
     public String setup(){
-        for (int i = 0; i < 2;i++){
+        int repeat = 5;
+        for (int i = 0; i < repeat;i++){
         Usuario usuario = new Usuario("Teste nome", "TesteUser", "TesteSenha", Nivel.USUARIO);
         usuario.setId(usuarioRepository.save(usuario).getId());
 
@@ -46,6 +48,29 @@ public class TestController {
         }
     }
         return "Setup";
+    }
+
+    @GetMapping("/setup/{repeat}")
+    public String setup(@PathVariable int repeat){
+        for (int i = 0; i < repeat;i++){
+            Usuario usuario = new Usuario("Teste nome", "TesteUser", "TesteSenha", Nivel.USUARIO);
+            usuario.setId(usuarioRepository.save(usuario).getId());
+
+            Item item = new Item("Teste Item");
+            item.setId(itemRepository.save(item).getId());
+
+            for (int k = 0; k < 2;k++) {
+                Pedido pedido = new Pedido(usuario);
+                pedido.setId(pedidoRepository.save(pedido).getId());
+                for (int l = 0; l < 2;l++) {
+
+                    ItemPedido itemPedido = new ItemPedido(pedido, item, 1);
+                    itemPedidoRepository.save(itemPedido);
+                }
+            }
+        }
+        String ret = "Setup ran " + String.valueOf(repeat) + " times.";
+        return ret;
     }
 
     @GetMapping()

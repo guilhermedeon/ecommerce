@@ -24,7 +24,7 @@ public class Pedido {
     Usuario usuario;
 
     @OneToMany(mappedBy = "pedido")
-    private List<ItemPedido> listaItensPedido = new ArrayList<>();
+    private List<ItemPedido> itensPedido = new ArrayList<>();
 
     public Pedido(Usuario usuario){
         this.usuario = usuario;
