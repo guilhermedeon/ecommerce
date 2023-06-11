@@ -1,6 +1,7 @@
 package com.g11.ecommerce.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -13,23 +14,15 @@ import lombok.*;
 @Table(name = "item_pedido")
 
 public class ItemPedido {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", nullable = false)
-    @JsonIgnore @ToString.Exclude
-    private Long id;
 
-    @ManyToOne @JsonIgnore @ToString.Exclude
-    private Pedido pedido;
+    @EmbeddedId
+    private ItemPedidoPK pk;
 
-    @ManyToOne
-    private Item item;
     private int quantidade;
 
     public ItemPedido(Pedido pedido, Item item, int quantidade){
-        this.pedido = pedido;
-        this.item = item;
         this.quantidade = quantidade;
+        this.pk = new ItemPedidoPK(pedido,item);
     }
 
 }

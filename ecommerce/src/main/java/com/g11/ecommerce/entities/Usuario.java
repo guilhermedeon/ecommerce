@@ -1,5 +1,6 @@
 package com.g11.ecommerce.entities;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -25,7 +26,7 @@ public class Usuario {
     @Enumerated
     private Nivel nivel;
 
-    @OneToMany (mappedBy = "usuario")
+    @OneToMany (mappedBy = "usuario") @JsonManagedReference
     List<Pedido> pedidos = new ArrayList<>();
 
     public Usuario(String nome, String username, String senha, Nivel nivel){

@@ -1,6 +1,7 @@
 package com.g11.ecommerce.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.g11.ecommerce.entities.dto.ItemCreateDTO;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -22,12 +23,13 @@ public class Item {
     private String nome;
     private String urlImagem;
 
-    @ToString.Exclude
-    @OneToMany(mappedBy = "item") @JsonIgnore
-    private List<ItemPedido> itensPedido = new ArrayList<>();
-
     public Item(String nome){
         this.nome = nome;
+    }
+
+    public Item(ItemCreateDTO dto){
+        this.nome = dto.nome();
+        this.urlImagem = dto.url();
     }
 
 }

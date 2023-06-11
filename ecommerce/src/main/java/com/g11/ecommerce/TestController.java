@@ -28,42 +28,25 @@ public class TestController {
     JsonService jsonService;
 
     @GetMapping("/setup/")
-    public String setup(){
-        int repeat = 5;
-        for (int i = 0; i < repeat;i++){
-        Usuario usuario = new Usuario("Teste nome", "TesteUser", "TesteSenha", Nivel.USUARIO);
-        usuario.setId(usuarioRepository.save(usuario).getId());
-
-        Item item = new Item("Teste Item");
-        item.setId(itemRepository.save(item).getId());
-
-        for (int k = 0; k < 2;k++) {
-            Pedido pedido = new Pedido(usuario);
-            pedido.setId(pedidoRepository.save(pedido).getId());
-            for (int l = 0; l < 2;l++) {
-
-                ItemPedido itemPedido = new ItemPedido(pedido, item, 1);
-                itemPedidoRepository.save(itemPedido);
-            }
-        }
-    }
-        return "Setup";
+    public String snoparam(){
+        return setup(10);
     }
 
     @GetMapping("/setup/{repeat}")
-    public String setup(@PathVariable int repeat){
+    public String s(@PathVariable int repeat){
+        return setup(repeat);
+    }
+
+    public String setup(int repeat){
+        Item item = new Item("Teste Item");
+        item.setId(itemRepository.save(item).getId());
         for (int i = 0; i < repeat;i++){
             Usuario usuario = new Usuario("Teste nome", "TesteUser", "TesteSenha", Nivel.USUARIO);
             usuario.setId(usuarioRepository.save(usuario).getId());
-
-            Item item = new Item("Teste Item");
-            item.setId(itemRepository.save(item).getId());
-
             for (int k = 0; k < 2;k++) {
                 Pedido pedido = new Pedido(usuario);
                 pedido.setId(pedidoRepository.save(pedido).getId());
-                for (int l = 0; l < 2;l++) {
-
+                for (int l = 0; l < 3;l++) {
                     ItemPedido itemPedido = new ItemPedido(pedido, item, 1);
                     itemPedidoRepository.save(itemPedido);
                 }
