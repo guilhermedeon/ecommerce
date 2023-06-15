@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<project version="4">
-  <component name="JpbDataSourceConfig">
-    <data-sources>
-      <data-source id="6498ed97-97bd-4abb-9b96-d1d04ee59771" name="pi5b" url="jdbc:postgresql://localhost/pi5b" driverClass="org.postgresql.Driver" />
-    </data-sources>
-  </component>
-</project>
