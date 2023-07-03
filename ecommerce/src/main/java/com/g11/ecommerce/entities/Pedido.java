@@ -1,7 +1,6 @@
 package com.g11.ecommerce.entities;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.*;
@@ -17,11 +16,11 @@ import java.util.List;
 @Entity
 @Table(name = "pedido")
 public class Pedido {
+
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     @Column(name = "id", nullable = false)
-    private Long id;
-    private boolean isOpen = true;
+    private int id;
 
     @ManyToOne @ToString.Exclude @JsonBackReference
     Usuario usuario;
@@ -29,13 +28,8 @@ public class Pedido {
     @OneToMany(mappedBy = "pk.pedido") @JsonManagedReference
     private List<ItemPedido> itensPedido = new ArrayList<>();
 
-
     public Pedido(Usuario usuario){
         this.usuario = usuario;
-    }
-
-    public void close(){
-        this.isOpen = false;
     }
 
 }
