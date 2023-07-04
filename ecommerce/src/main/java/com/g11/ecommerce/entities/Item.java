@@ -22,4 +22,9 @@ public class Item {
         this.nome = nome;
     }
 
+    public Item(String nome, String urlImagem){
+        this.nome = nome;
+        this.urlImagem = urlImagem;
+    }
+
 }
