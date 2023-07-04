@@ -13,15 +13,20 @@ Edit application.properties to setup database name, user and password. It is als
 ## Requirements
 
 Java 17
+
 Maven
+
 PostgreSQL
 
 
 ## Technologies used
 
 Spring Boot
+
 Hibernate
+
 PostgreSQL
+
 Swagger
 
 
