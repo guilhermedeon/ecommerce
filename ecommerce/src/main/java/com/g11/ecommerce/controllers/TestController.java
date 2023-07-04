@@ -1,6 +1,7 @@
-package com.g11.ecommerce;
+package com.g11.ecommerce.controllers;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
+import com.g11.ecommerce.JsonService;
 import com.g11.ecommerce.entities.*;
 import com.g11.ecommerce.repositories.ItemPedidoRepository;
 import com.g11.ecommerce.repositories.ItemRepository;
